@@ -123,7 +123,7 @@ export default {
   computed: {
     sortedRequests() {
       return [...this.requests].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-    }
+    },
     paginatedRequests() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
