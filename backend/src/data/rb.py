@@ -1,3 +1,4 @@
+from datetime import date
 class RBData:
     def __init__(self, id: int | None = None,
                 name: str | None = None,

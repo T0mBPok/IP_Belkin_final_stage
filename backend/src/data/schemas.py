@@ -1,10 +1,12 @@
 from pydantic import BaseModel, EmailStr
+from datetime import datetime
 
 class GetData(BaseModel):
     id: int
     name: str
     phone_number: str
     email: str
+    created_at: datetime
     
 class AddData(BaseModel):
     name: str

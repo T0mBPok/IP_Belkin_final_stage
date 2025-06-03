@@ -111,9 +111,11 @@ export default {
       
       const sanitizedForm = {
         name: this.sanitizeInput(this.form.name.trim()),
-        phone: this.sanitizeInput(this.form.phone.trim()),
+        phone_number: this.sanitizeInput(this.form.phone.trim()),
         email: this.sanitizeInput(this.form.email.trim())
       };
+      
+      console.log(sanitizedForm)
 
       try {
         const response = await fetch("http://localhost:9000/data/", {
