@@ -159,6 +159,7 @@ export default {
           withCredentials: true
         });
         this.requests = response.data;
+        console.log(this.requests); 
       } catch (error) {
         if (error.response && error.response.status === 401) {
           this.logout();
