@@ -22,9 +22,9 @@
           <tbody>
             <tr v-for="request in paginatedRequests" :key="request.id">
               <td>{{ request.name }}</td>
-              <td>{{ request.phone }}</td>
+              <td>{{ request.phone_number }}</td> 
               <td>{{ request.email }}</td>
-              <td>{{ formatDate(request.createdAt) }}</td>
+              <td>{{ formatDate(request.created_at) }}</td> 
               <td>
                 <button class="delete-btn" @click="deleteRequest(request.id)">Удалить</button>
               </td>
