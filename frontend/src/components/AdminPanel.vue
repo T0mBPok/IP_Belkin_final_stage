@@ -153,9 +153,10 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get('http://localhost:3000/requests', {
+        const response = await axios.get("http://localhost:9000/data/", {
           headers: { Authorization: `Bearer ${token}` },
-          params: { _page: this.currentPage, _limit: this.itemsPerPage }
+          params: { _page: this.currentPage, _limit: this.itemsPerPage },
+          withCredentials: true
         });
         this.requests = response.data;
       } catch (error) {
@@ -251,7 +252,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        await axios.delete(`http://localhost:3000/requests/${id}`, {
+        await axios.delete(`http://localhost:9000/data/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.requests = this.requests.filter(request => request.id !== id);

@@ -5,11 +5,24 @@ from datetime import datetime, timezone
 from src.users.dao import UserDAO
 
 
+# def get_token(request: Request):
+#     token = request.cookies.get('access_token')
+#     print(token)
+#     if not token:
+#         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+#                             detail='Токен не найден')
+#     return token
 def get_token(request: Request):
-    token = request.cookies.get('access_token')
+    auth_header = request.headers.get('Authorization')
+    if auth_header and auth_header.startswith('Bearer '):
+        token = auth_header[len('Bearer '):]
+    else:
+        token = request.cookies.get('access_token')    
     if not token:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-                            detail='Токен не найден')
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail='Токен не найден'
+        )
     return token
 
 async def get_current_user(token: str = Depends(get_token)):

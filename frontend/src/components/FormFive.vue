@@ -116,7 +116,7 @@ export default {
       };
 
       try {
-        const response = await fetch('https://your-backend-api.com/submit', {
+        const response = await fetch("http://localhost:9000/data/", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
