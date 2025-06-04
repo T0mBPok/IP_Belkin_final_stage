@@ -8,5 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./src ./src
 COPY .env /app/.env
+COPY alembic.ini /app/alembic.ini 
 
 CMD ["python", "-m", "src.main"]
