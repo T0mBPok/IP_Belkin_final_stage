@@ -40,7 +40,8 @@ export default {
       username: '',
       password: '',
       loading: false,
-      errorMessage: ''
+      errorMessage: '',
+      backendPort: 'http://212.192.127.152:9000'
     };
   },
     methods: {
@@ -74,7 +75,7 @@ export default {
       try {
         
         const response = await axios.post(
-          "http://localhost:9000/user/", 
+          "${this.backendPort}/user/", 
           {
             login: this.username,
             password: this.password

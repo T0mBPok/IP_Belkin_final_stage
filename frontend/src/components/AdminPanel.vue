@@ -117,7 +117,8 @@ export default {
         createdAt: new Date().toISOString()
       },
       adding: false,
-      editingReview: null
+      editingReview: null,
+      backendPort: 'http://212.192.127.152:9000'
     };
   },
   computed: {
@@ -156,7 +157,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get("http://localhost:9000/data/", {
+        const response = await axios.get("${this.backendPort}/data/", {
           headers: { Authorization: `Bearer ${token}` },
           params: { _page: this.currentPage, _limit: this.itemsPerPage },
           withCredentials: true
@@ -256,7 +257,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        await axios.delete(`http://localhost:9000/data/${id}`, {
+        await axios.delete(`${this.backendPort}/data/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.requests = this.requests.filter(request => request.id !== id);
