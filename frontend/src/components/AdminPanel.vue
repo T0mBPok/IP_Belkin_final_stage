@@ -20,7 +20,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="request in paginatedRequests" :key="request.id">
+            <tr v-for="request in sortedRequests" :key="request.id">
               <td>{{ request.name }}</td>
               <td>{{ request.phone_number }}</td> 
               <td>{{ request.email }}</td>
@@ -121,6 +121,9 @@ export default {
     };
   },
   computed: {
+    sortedRequests() {
+      return [...this.requests].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    },
     paginatedRequests() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
