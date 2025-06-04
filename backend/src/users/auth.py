@@ -6,7 +6,7 @@ from passlib.context import CryptContext
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
 def create_token(data: str):
-    to_encode = data.copy()
+    to_encode = data.copy() # type: ignore
     expire = datetime.now(timezone.utc) + timedelta(days = 30)
     to_encode.update({"exp": expire})
     auth_data = get_auth_data()

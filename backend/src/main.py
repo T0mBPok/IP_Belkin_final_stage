@@ -3,13 +3,16 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from src.users.router import router as user_router
 from src.data.router import router as data_router
+from src.swagger.router import create_swagger_router
 
-app = FastAPI(title="IP_belkin")
+app = FastAPI(title="IP_belkin", docs_url=None, redoc_url=None, openapi_url=None)
+# app = FastAPI(title="IP_belkin")
 PORT=9000
 HOST = "0.0.0.0"
 
 app.include_router(user_router)
 app.include_router(data_router)
+app.include_router(create_swagger_router(app))
 
 app.add_middleware(
     CORSMiddleware,
