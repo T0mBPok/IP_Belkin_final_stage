@@ -118,7 +118,7 @@ export default {
       console.log(sanitizedForm)
 
       try {
-        const response = await fetch("http://localhost:9000/data/", {
+        const response = await fetch("http://212.192.127.152:9000/data/", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

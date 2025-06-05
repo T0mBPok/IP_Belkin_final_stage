@@ -58,17 +58,20 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10vh 7vh;
+  padding: 10vh 13vh;
   background-color: #f5f7fa;
   font-family: 'Nekst', sans-serif;
-  margin-top: 0;
   position: relative;
   min-height: 50vh;
   overflow: visible;
-  gap: 3rem; /* Фиксированный отступ между collage и ride */
+  gap: 0; /* Фиксированный отступ между collage и ride */
+  top: 7vh;
+  padding-bottom: clamp(50px, 5vw, 200px);
 }
 
 .collage {
+  margin-top: 5%;
+  left: 4.5%;
   display: flex;
   gap: 1.5vmin; /* Пропорциональный отступ между изображениями */
   position: relative;
@@ -77,8 +80,8 @@ export default {
 }
 
 .collage img {
-  width: clamp(200px, 30vw, 750px); /* Пропорциональное масштабирование с ограничениями */
-  height: clamp(200px, 30vw, 750px);
+  width: clamp(200px, 25vw, 750px); /* Пропорциональное масштабирование с ограничениями */
+  height: clamp(200px, 25vw, 750px);
   border-radius: 15px;
   object-fit: cover;
   background-color: #fff;
@@ -90,7 +93,7 @@ export default {
   position: absolute;
   width: 60%; /* Пропорционально первому изображению */
   height: auto; /* Пропорционально первому изображению */
-  transform: translate(45%, 20%); /* Фиксированное смещение относительно первого изображения */
+  transform: translate(40%, 9%); /* Фиксированное смещение относительно первого изображения */
   right: 0;
   border-radius: 3vw;
   bottom: auto; /* Убрано фиксированное позиционирование снизу */
@@ -111,16 +114,16 @@ export default {
 
 .ride-text h2 {
   font-family: 'Nekst-SemiBold', sans-serif;
-  font-size: clamp(2.2rem, 3.3vw, 3.5rem); /* Пропорциональный размер шрифта */
+  font-size: clamp(2.2rem, 2.7vw, 3.5rem); /* Пропорциональный размер шрифта */
   color: black;
-  margin: 0 0 1vh 0;
+  margin: 0 0 2vh 0;
   font-weight: bold;
   line-height: 1.1;
 }
 
 .ride-text p {
   font-family: 'Nekst-Thin', sans-serif;
-  font-size: clamp(1.3rem, 1.7vw, 1.7rem); /* Пропорциональный размер шрифта */
+  font-size: clamp(1.2rem, 1.3vw, 2rem); /* Пропорциональный размер шрифта */
   color: #4a5568;
   margin: 0 0 25px 0;
   line-height: 1.2;
@@ -133,7 +136,7 @@ export default {
   padding: clamp(8px, 1.3vw, 100px) clamp(20px, 2.5vw, 250px); /* Пропорциональные отступы */
   border-radius: 25px;
   cursor: pointer;
-  font-size: clamp(0.9rem, 1.7vw, 1.7rem); /* Пропорциональный размер шрифта */
+  font-size: clamp(0.9rem, 1.5vw, 1.7rem); /* Пропорциональный размер шрифта */
   transition: 0.7s;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
   font-family: 'Nekst-Light', sans-serif;
@@ -148,16 +151,20 @@ export default {
 
 /* Стили нового раздела*/
 .form3 {
+  position: relative;
+  top: 7vh;
   width: 100%;
-  padding: 10vh 7vh;
+  padding: 10vh 13vh;
   background-color: #fff;
   font-family: 'Nekst', sans-serif;
   text-align: center;
+  padding-top: 5vw;
+  padding-bottom: 7vw;
 }
 
 .form3 h2 {
   font-family: 'Nekst-SemiBold', sans-serif;
-  font-size: clamp(1.5rem, 3.3vw, 3.5rem);
+  font-size: clamp(1.5rem, 2.7vw, 3.5rem);
   color: #1a202c;
   margin-bottom: 5vh;
   font-weight: bold;
@@ -168,7 +175,7 @@ export default {
 
 .form3 h3 {
   font-family: 'Nekst-SemiBold', sans-serif;
-  font-size: clamp(1.2rem, 2.3vw, 1.9rem);
+  font-size: clamp(1.2rem, 2vw, 1.9rem);
   color: #1a202c;
   margin-bottom: 2vw;
 }
@@ -189,8 +196,8 @@ export default {
 }
 
 .benefit-icon-background{
-  width: clamp(50px, 7.5vw, 110px);
-  height: clamp(50px, 7.5vw, 110px);
+  width: clamp(50px, 7vw, 110px);
+  height: clamp(50px, 7vw, 110px);
   border-radius: 50%;
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
@@ -213,17 +220,18 @@ export default {
 
 .benefit-item p {
   font-family: 'Nekst-Thin', sans-serif;
-  font-size: clamp(0.9rem, 1.7vw, 1.5rem);
+  font-size: clamp(0.9rem, 1.4vw, 1.5rem);
   color: #4a5568;
   line-height: 1.4;
 }
 
 @media (max-width: 768px) {
   .form2 {
+    
     display: flex;
     flex-direction: column;
     padding: 5vh 3vh;
-    padding-bottom: 0;
+    padding-bottom: 2vh;
     min-height: auto;
     gap: 0rem;
   }
@@ -232,12 +240,14 @@ export default {
     right: 15%;
     margin-right: 0;
     justify-content: center;
+    
     width: 100%;
     min-height: 30vh;
     overflow: visible;
   }
 
   .collage img {
+    right: 20%;
     width: clamp(150px, 40vw, 200px);
     height: clamp(150px, 40vw, 200px);
     position: relative;
@@ -259,7 +269,7 @@ export default {
     transform: rotate(5deg);
     top: 0;
     border-radius: 20%;
-    left: 50%;
+    left: 35%;
     margin-left: calc(clamp(150px, 40vw, 200px) / 4); /* Смещение вправо */
     animation: fadeIn 0.5s ease 0.3s forwards;
   }
