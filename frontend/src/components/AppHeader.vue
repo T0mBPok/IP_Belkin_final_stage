@@ -71,7 +71,6 @@ export default {
 
 /* Логотип */
 .logo {
-  padding-top: 1%;
   align-self: flex-start;
   font-size: clamp(24px, 2.3vw, 50px);
   font-family: 'Nekst-Bold', sans-serif;
@@ -148,6 +147,9 @@ export default {
 @media (max-width: 768px) {
   .header{
     padding: 0.5rem 5%;
+  }
+  .logo{
+    padding-top: 1%;
   }
   .nav-desktop {
     display: none;
