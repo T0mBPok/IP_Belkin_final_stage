@@ -6,7 +6,6 @@ from src.data.router import router as data_router
 from src.swagger.router import create_swagger_router
 
 app = FastAPI(title="IP_belkin", docs_url=None, redoc_url=None, openapi_url=None)
-# app = FastAPI(title="IP_belkin")
 PORT=9000
 HOST = "0.0.0.0"
 
@@ -16,7 +15,8 @@ app.include_router(create_swagger_router(app))
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8000"], 
+    allow_origins=["http://localhost:8000",
+                   "http://212.192.127.152:9090"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
