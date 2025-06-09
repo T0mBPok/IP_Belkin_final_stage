@@ -25,8 +25,9 @@ class BaseDAO:
             return data.scalars().all()
         
     @classmethod
-    async def delete(cls, *conditions):
+    async def delete(cls, **filter_by):
         async with async_session_maker() as session:
+            conditions = [getattr(cls.model, k) == v for k, v in filter_by.items() if v is not None]
             check = await session.execute(delete(cls.model).where(*conditions))
             try:
                 await session.commit()

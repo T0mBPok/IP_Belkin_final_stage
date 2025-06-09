@@ -15,8 +15,3 @@ class DataLogic(DataDAO):
                 )
             raise e
         return data
-    
-    @classmethod
-    async def delete(cls, **filter_by):
-        conditions = [getattr(cls.model, k) == v for k, v in filter_by.items() if v is not None]
-        return await super().delete(*conditions)

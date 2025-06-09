@@ -3,4 +3,5 @@ from sqlalchemy.orm import Mapped
 
 class Review(Base):
     id: Mapped[int_pk]
-    
+    name: Mapped[str_uniq]
+    text: Mapped[str]
