@@ -10,7 +10,7 @@
       <div class="blur-strip strip-6"></div>
     </div>
     <div class="hero-text">
-      <h1>СПЕЦИАЛЬНАЯ ОЦЕНКА УСЛОВИЙ ТРУДА</h1>
+      <h1>СПЕЦИАЛЬНАЯ ОЦЕНКА <br/> УСЛОВИЙ ТРУДА</h1>
       <p>ИП “Белкин” - это надежная компания по оценке условий труда</p>
       <button class="hero-button">Подробнее о компании</button>
       <img class="angle" src="/images/angle.png" alt="Стрелочка" />
@@ -28,9 +28,9 @@ export default {
 .form1 {
   width: 100%;
   height: fit-content;
-  max-height: 93vh;
+  height: 93vh;
   overflow: hidden;
-  margin-top: 7vh;
+  top: 7vh;
   position: relative; /* Добавляем для общего контекста */
 }
 
@@ -39,10 +39,11 @@ export default {
   overflow: hidden;
   height: 93vh;
   display: block;
-  position: relative; /* Делаем контейнер позиционированным для .blur-strip */
+  
 }
 
 .image {
+  position: absolute;
   width: 100%;
   height: 100%;
   max-height: 93vh;
@@ -96,8 +97,12 @@ export default {
 .hero-text {
   z-index: 5;
   position: absolute;
-  top: 35%;
+  top: 50%;
   left: 50%;
+  display: flex;
+  flex-direction: column; /* Расположение элементов друг под другом */
+  align-items: center; /* Горизонтальное центрирование */
+  justify-content: center;
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
@@ -106,25 +111,28 @@ export default {
 }
 
 .hero-text h1 {
-  margin-top: 20vh;
-  font-size: clamp(32px, 4.5vw, 100px);
+  
+  margin-top: 3vh;
+  font-size: clamp(32px, 4.7vw, 100px);
   font-family: 'Nekst-Bold', sans-serif;
   text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
   margin-bottom: 20px;
 }
 
 .hero-text p {
+  
+  margin-top: 5vh;
   font-family: 'Nekst-Light', sans-serif;
   color: black;
   border-radius: 50px;
   background-color: white;
   text-align: center;
   margin: auto;
-  width: 90%;
+  width: 62%;
   max-width: 880px;
   height: auto;
   padding: 10px 20px;
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(14px, 1.5vw, 18px);
 }
 
 .hero-button {
@@ -132,13 +140,13 @@ export default {
   color: white;
   border: none;
   padding: 2vw 4vw;
-  font-size: clamp(1.2rem, 1.7vw, 2rem);
+  font-size: clamp(1.2rem, 1.3vw, 2rem);
   border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s;
   font-family: 'Nekst-Light', sans-serif;
   height: auto;
-  margin-top: 20vh;
+  margin-top: 5rem;
   width: auto;
   min-width: 200px;
 }
@@ -157,7 +165,6 @@ export default {
 @media (max-width: 768px) {
   .form1 {
     max-height: 60vh;
-    margin-top: 5vh;
   }
 
   .image-container {
@@ -205,7 +212,6 @@ export default {
   }
 
   .hero-text h1 {
-    margin-top: 20vh;
     font-size: clamp(20px, 6vw, 50px);
     margin-bottom: 10px;
   }

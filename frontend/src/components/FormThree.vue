@@ -3,7 +3,7 @@
     <div class="banner">
       <img src="/images/banner-bg.png" alt="Banner background" class="banner-image" />
       <div class="banner-content">
-        <h2>СПЕЦИАЛЬНАЯ ОЦЕНКА УСЛОВИЙ ТРУДА</h2>
+        <h2>СПЕЦИАЛЬНАЯ ОЦЕНКА <br/> УСЛОВИЙ ТРУДА</h2>
         <p>Профессиональное оформление документов</p>
         <button class="banner-button">Связаться с нами</button>
       </div>
@@ -19,6 +19,7 @@ export default {
 
 <style scoped>
 .form3 {
+  top: 7vh;
   width: 100%;
   height: fit-content;
   position: relative;
@@ -60,7 +61,7 @@ export default {
 
 .banner-content h2 {
   font-family: 'Nekst-SemiBold', sans-serif;
-  font-size: clamp(2.9rem, 4.3vw, 4.5rem);
+  font-size: clamp(2.9rem, 3.5vw, 4rem);
   margin-bottom: 2vh;
   line-height: 1.1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
@@ -68,7 +69,7 @@ export default {
 
 .banner-content p {
   font-family: 'Nekst-Medium', sans-serif;
-  font-size: clamp(1.2rem, 1.7vw, 2rem);
+  font-size: clamp(1.2rem, 1.5vw, 2rem);
   margin-bottom: 3vh;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
@@ -80,7 +81,7 @@ export default {
   padding: clamp(15px, 1vw, 100px) clamp(20px, 2.5vw, 250px); /* Пропорциональные отступы */
   border-radius: 25px;
   cursor: pointer;
-  font-size: clamp(0.5rem, 1.3vw, 1.3rem); /* Пропорциональный размер шрифта */
+  font-size: clamp(0.5rem, 1.1vw, 1.3rem); /* Пропорциональный размер шрифта */
   transition: 0.7s;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
   font-family: 'Nekst-Light', sans-serif;

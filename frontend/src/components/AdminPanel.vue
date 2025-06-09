@@ -157,7 +157,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get("${this.backendPort}/data/", {
+        const response = await axios.get("http://212.192.127.152:9000/data/", {
           headers: { Authorization: `Bearer ${token}` },
           params: { _page: this.currentPage, _limit: this.itemsPerPage },
           withCredentials: true
@@ -257,7 +257,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        await axios.delete(`${this.backendPort}/data/${id}`, {
+        await axios.delete(`http://212.192.127.152:9000/data/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.requests = this.requests.filter(request => request.id !== id);

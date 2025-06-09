@@ -47,13 +47,19 @@ export default {
 
 <style scoped>
 .header {
+  
   background-color: black;
   color: #ffffff;
   width: 100%;
   position: fixed;
+  height: 7vh;
   top: 0;
   z-index: 1000;
   padding: 1rem 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Распределяет элементы по краям контейнера */
+  
 }
 
 /* Контейнер с логотипом и кнопкой */
@@ -65,12 +71,14 @@ export default {
 
 /* Логотип */
 .logo {
-  font-size: clamp(24px, 3vw, 50px);
+  align-self: flex-start;
+  font-size: clamp(24px, 2.3vw, 50px);
   font-family: 'Nekst-Bold', sans-serif;
 }
 
 /* Кнопка меню (гамбургер / крестик) */
 .menu-toggle {
+  align-self: flex-end;
   display: none;
   background: none;
   border: none;
@@ -83,7 +91,7 @@ export default {
 .nav-link {
   color: #ffffff;
   text-decoration: none;
-  font-size: clamp(1.2rem, 1.3vw, 1.7rem);
+  font-size: clamp(1.1rem, 1.3vw, 1.7rem);
   transition: color 0.3s;
 }
 
@@ -97,17 +105,26 @@ export default {
   gap: 2rem;
   font-family: 'Nekst-Light', sans-serif;
   justify-content: flex-end;
-  margin-top: 1rem;
+  
 }
 
 /* Мобильная навигация — по умолчанию скрыта */
 .nav-menu-mobile {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 1rem;
   font-family: 'Nekst-Light', sans-serif;
   padding-top: 1rem;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 999;
+  align-items: center;
 }
+
 
 /* Анимация для мобильного меню */
 .slide-down-enter-active,
@@ -130,6 +147,9 @@ export default {
 @media (max-width: 768px) {
   .header{
     padding: 0.5rem 5%;
+  }
+  .logo{
+    padding-top: 1%;
   }
   .nav-desktop {
     display: none;

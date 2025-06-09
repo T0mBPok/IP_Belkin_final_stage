@@ -45,6 +45,8 @@ export default {
 
 <style scoped>
 .form4 {
+  top: 7vh;
+  position: relative;
   width: 100%;
   padding: 10vh 7vh;
   background-color: #fff;
