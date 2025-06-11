@@ -113,8 +113,7 @@ export default {
       reviewItemsPerPage: 3, // Ровно 3 отзыва на страницу
       newReview: {
         text: '',
-        author: '',
-        createdAt: new Date().toISOString()
+        name: '',
       },
       adding: false,
       editingReview: null,
