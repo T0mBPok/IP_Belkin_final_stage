@@ -54,7 +54,7 @@
           <input
             type="text"
             id="review-author"
-            v-model="newReview.author"
+            v-model="newReview.name"
             placeholder="Введите имя автора"
           />
         </div>
@@ -75,10 +75,9 @@
           <tbody>
             <tr v-for="review in paginatedReviews" :key="review.id">
               <td>{{ review.text }}</td>
-              <td>{{ review.author }}</td>
+              <td>{{ review.name }}</td>
               <td>{{ formatDate(review.createdAt) }}</td>
               <td>
-                <button class="edit-btn" @click="editReview(review)">Редактировать</button>
                 <button class="delete-btn" @click="deleteReview(review.id)">Удалить</button>
               </td>
             </tr>
@@ -114,6 +113,7 @@ export default {
       newReview: {
         text: '',
         name: '',
+        createdAt: new Date().toISOString()
       },
       adding: false,
       editingReview: null,
@@ -193,7 +193,7 @@ export default {
       }
     },
     async addReview() {
-      if (!this.newReview.text.trim() || !this.newReview.author.trim()) {
+      if (!this.newReview.text.trim() || !this.newReview.name.trim()) {
         this.reviewError = 'Заполните все поля';
         return;
       }
@@ -205,7 +205,7 @@ export default {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.reviews.push(response.data);
-        this.newReview = { text: '', author: '' };
+        this.newReview = { text: '', name: ''};
         this.reviewError = '';
       } catch (error) {
         this.reviewError = 'Ошибка при добавлении отзыва.';
@@ -218,7 +218,7 @@ export default {
       this.editingReview = { ...review };
     },
     async saveReview() {
-      if (!this.editingReview.text.trim() || !this.editingReview.author.trim()) {
+      if (!this.editingReview.text.trim() || !this.editingReview.name.trim()) {
         this.reviewError = 'Заполните все поля';
         return;
       }
