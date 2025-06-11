@@ -76,7 +76,6 @@
             <tr v-for="review in paginatedReviews" :key="review.id">
               <td>{{ review.text }}</td>
               <td>{{ review.name }}</td>
-              <td>{{ formatDate(review.createdAt) }}</td>
               <td>
                 <button class="delete-btn" @click="deleteReview(review.id)">Удалить</button>
               </td>
@@ -112,8 +111,7 @@ export default {
       reviewItemsPerPage: 3, // Ровно 3 отзыва на страницу
       newReview: {
         text: '',
-        name: '',
-        createdAt: new Date().toISOString()
+        name: ''
       },
       adding: false,
       editingReview: null,
