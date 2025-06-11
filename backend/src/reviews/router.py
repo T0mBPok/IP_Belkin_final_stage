@@ -7,7 +7,7 @@ from src.reviews.rb import RBReview
 router = APIRouter(prefix='/reviews', tags=['Работа с отзывами'])
 
 @router.get('/', summary='Получить отзывы', response_model=list[GetReview])
-async def get_reviews(request_body: RBReview = Depends(), user: str = Depends(get_current_user)):
+async def get_reviews(request_body: RBReview = Depends()):
     return await ReviewDAO.get_all(**request_body.to_dict())
 
 @router.post('/', summary='Отправить отзыв', response_model=AddReview)

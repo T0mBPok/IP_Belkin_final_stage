@@ -29,12 +29,13 @@ export default {
   methods: {
     async fetchReviews() {
       try {
-        const response = await axios.get('http://localhost:3000/reviews', {
+        const response = await axios.get('http://localhost:9000/reviews/', {
           params: {
             _limit: 3 // Загружаем только 3 отзыва
           }
         });
         this.reviews = response.data;
+        console.log(response.data)
       } catch (error) {
         console.error('Ошибка при загрузке отзывов:', error);
       }
