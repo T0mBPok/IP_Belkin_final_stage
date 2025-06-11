@@ -54,7 +54,7 @@
           <input
             type="text"
             id="review-author"
-            v-model="newReview.author"
+            v-model="newReview.name"
             placeholder="Введите имя автора"
           />
         </div>
@@ -75,10 +75,8 @@
           <tbody>
             <tr v-for="review in paginatedReviews" :key="review.id">
               <td>{{ review.text }}</td>
-              <td>{{ review.author }}</td>
-              <td>{{ formatDate(review.createdAt) }}</td>
+              <td>{{ review.name }}</td>
               <td>
-                <button class="edit-btn" @click="editReview(review)">Редактировать</button>
                 <button class="delete-btn" @click="deleteReview(review.id)">Удалить</button>
               </td>
             </tr>
@@ -113,8 +111,7 @@ export default {
       reviewItemsPerPage: 3, // Ровно 3 отзыва на страницу
       newReview: {
         text: '',
-        author: '',
-        createdAt: new Date().toISOString()
+        name: ''
       },
       adding: false,
       editingReview: null,
@@ -181,7 +178,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get('http://localhost:3000/reviews', {
+        const response = await axios.get('http://localhost:9000/reviews/', {
           headers: { Authorization: `Bearer ${token}` },
           params: { _page: this.currentReviewPage, _limit: this.reviewItemsPerPage }
         });
@@ -194,7 +191,7 @@ export default {
       }
     },
     async addReview() {
-      if (!this.newReview.text.trim() || !this.newReview.author.trim()) {
+      if (!this.newReview.text.trim() || !this.newReview.name.trim()) {
         this.reviewError = 'Заполните все поля';
         return;
       }
@@ -202,11 +199,12 @@ export default {
       this.adding = true;
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.post('http://localhost:3000/reviews', this.newReview, {
+        console.log(this.newReview)
+        const response = await axios.post('http://localhost:9000/reviews/', this.newReview, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.reviews.push(response.data);
-        this.newReview = { text: '', author: '', createdAt: new Date().toISOString() };
+        this.newReview = { text: '', name: ''};
         this.reviewError = '';
       } catch (error) {
         this.reviewError = 'Ошибка при добавлении отзыва.';
@@ -219,14 +217,14 @@ export default {
       this.editingReview = { ...review };
     },
     async saveReview() {
-      if (!this.editingReview.text.trim() || !this.editingReview.author.trim()) {
+      if (!this.editingReview.text.trim() || !this.editingReview.name.trim()) {
         this.reviewError = 'Заполните все поля';
         return;
       }
 
       try {
         const token = localStorage.getItem('authToken');
-        await axios.put(`http://localhost:3000/reviews/${this.editingReview.id}`, this.editingReview, {
+        await axios.put(`http://localhost:9000/reviews/${this.editingReview.id}`, this.editingReview, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const index = this.reviews.findIndex(r => r.id === this.editingReview.id);
@@ -243,7 +241,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        await axios.delete(`http://localhost:3000/reviews/${id}`, {
+        await axios.delete(`http://localhost:9000/reviews/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.reviews = this.reviews.filter(review => review.id !== id);

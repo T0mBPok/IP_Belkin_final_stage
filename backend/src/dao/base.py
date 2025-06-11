@@ -1,6 +1,7 @@
 from src.database import async_session_maker
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import select, delete
+from fastapi import HTTPException, status
 
 
 class BaseDAO:
@@ -13,9 +14,9 @@ class BaseDAO:
             session.add(new_obj)
             try:
                 await session.commit()
-            except SQLAlchemyError as e:
+            except SQLAlchemyError:
                 await session.rollback()
-                raise e
+                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail = 'Отзыв такими данными уже существует')
             return new_obj
         
     @classmethod
