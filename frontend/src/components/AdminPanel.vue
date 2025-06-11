@@ -157,7 +157,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get("http://localhost:9000/data/", {
+        const response = await axios.get("http://212.192.127.152:9000/data/", {
           headers: { Authorization: `Bearer ${token}` },
           params: { _page: this.currentPage, _limit: this.itemsPerPage },
           withCredentials: true
@@ -181,7 +181,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get('http://localhost:3000/reviews', {
+        const response = await axios.get('http://212.192.127.152:9000/reviews', {
           headers: { Authorization: `Bearer ${token}` },
           params: { _page: this.currentReviewPage, _limit: this.reviewItemsPerPage }
         });
@@ -202,7 +202,7 @@ export default {
       this.adding = true;
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.post('http://localhost:3000/reviews', this.newReview, {
+        const response = await axios.post('http://212.192.127.152:9000/reviews', this.newReview, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.reviews.push(response.data);
@@ -226,7 +226,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        await axios.put(`http://localhost:3000/reviews/${this.editingReview.id}`, this.editingReview, {
+        await axios.put(`http://212.192.127.152:9000/reviews/${this.editingReview.id}`, this.editingReview, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const index = this.reviews.findIndex(r => r.id === this.editingReview.id);
@@ -243,7 +243,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        await axios.delete(`http://localhost:3000/reviews/${id}`, {
+        await axios.delete(`http://212.192.127.152:9000/reviews/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.reviews = this.reviews.filter(review => review.id !== id);
@@ -257,7 +257,7 @@ export default {
 
       try {
         const token = localStorage.getItem('authToken');
-        await axios.delete(`http://localhost:9000/data/${id}`, {
+        await axios.delete(`http://212.192.127.152:9000/data/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.requests = this.requests.filter(request => request.id !== id);
