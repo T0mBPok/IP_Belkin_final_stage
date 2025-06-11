@@ -205,7 +205,7 @@ export default {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.reviews.push(response.data);
-        this.newReview = { text: '', author: '', createdAt: new Date().toISOString() };
+        this.newReview = { text: '', author: '' };
         this.reviewError = '';
       } catch (error) {
         this.reviewError = 'Ошибка при добавлении отзыва.';
