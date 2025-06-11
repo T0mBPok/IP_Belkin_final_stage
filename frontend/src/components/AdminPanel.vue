@@ -199,7 +199,6 @@ export default {
       this.adding = true;
       try {
         const token = localStorage.getItem('authToken');
-        console.log(this.newReview)
         const response = await axios.post('http://localhost:9000/reviews/', this.newReview, {
           headers: { Authorization: `Bearer ${token}` }
         });
