@@ -6,7 +6,7 @@
       <div class="review-card" v-for="review in reviews.slice(0, 3)" :key="review.id">
         <img src="/images/review-icon.png" alt="Review icon" class="review-icon" />
         <p>{{ review.text }}</p>
-        <p class="author">{{ review.author }}</p>
+        <p class="author">{{ review.name }}</p>
       </div>
     </div>
     <div v-else class="loading">Загрузка отзывов...</div>
@@ -29,7 +29,7 @@ export default {
   methods: {
     async fetchReviews() {
       try {
-        const response = await axios.get('http://localhost:9000/reviews/', {
+        const response = await axios.get('http://212.192.127.152:9000/reviews/', {
           params: {
             _limit: 3 // Загружаем только 3 отзыва
           }
